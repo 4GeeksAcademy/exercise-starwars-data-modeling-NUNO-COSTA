@@ -21,23 +21,23 @@ class User(Base):
 class Character(Base):
     __tablename__ = 'Character'
     ID = Column(Integer, primary_key=True)
-    character_name = Column(String(250))
-    character_description = Column(String(250))
+    character_name = Column(String(250), nullable=False)
+    character_description = Column(String(250), nullable=False)
 
 class Planet(Base):
     __tablename__ = 'Planet'
     ID = Column(Integer, primary_key=True)
-    planet_name = Column(String(250))
-    planet_description = Column(String(250))
+    planet_name = Column(String(250), nullable=False)
+    planet_description = Column(String(250), nullable=False)
 
-class favourite_characters(Base):
+class Favourite_Characters(Base):
     __tablename__ = 'Favourite Characters'
     ID = Column(Integer, primary_key=True)
     userId = Column(Integer, ForeignKey('User.ID'))
     favourite_character = Column(Integer, ForeignKey('Character.ID'))
     user = relationship(User)
 
-class favourite_planets(Base):
+class Favourite_Planets(Base):
     __tablename__ = 'Favourite Planets'
     ID = Column(Integer, primary_key=True)
     userID = Column(Integer, ForeignKey('User.ID'))
